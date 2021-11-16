@@ -1,0 +1,194 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /*2228318*/
+    color:white;
+    font-family: 'Lato', sans-serif;
+}
+
+body{
+    background-color: #0b0b0c;
+}
+.today{
+    color:red;
+}
+
+.mainWrapper{
+    display: flex;
+    position: relative;
+    flex-direction: row; /* main axis is horizontal */
+    justify-content: center; /*main axis:will change horizontally */
+    align-items: center;    /*cross axis:will change vertically */ 
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+.mainWrapper::before{
+    z-index: 0;
+    position: absolute;
+    content: "";
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    top:-10%;
+    left:20%;
+    background: #00F260;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #0575E6, #00F260);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #0575E6, #00F260); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    animation: move 10s infinite ease;
+}
+
+.mainWrapper::after{
+    z-index: 0;
+    position: absolute;
+    content: "";
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    bottom:-10%;
+    right:20%;
+
+    background: #C33764;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #1D2671, #C33764);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #1D2671, #C33764); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    animation: move2 10s infinite ease;
+}
+
+.mainWrapper .calendarBox{
+    position: relative;
+    z-index: 1000;
+    width: clamp(30rem, 60vw , 35rem);
+    height: 80vh;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 1px 1px 12px 0 rgba(102, 101, 101, 0.37);
+    backdrop-filter: blur( 9px );
+    -webkit-backdrop-filter: blur( 9px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+}
+
+
+table{
+    border-collapse:separate;
+
+    border-spacing: 10px 14px;
+    height: 80%;
+
+    width: 80%;
+}
+
+table td{
+    background: inherit;
+    text-align: center;
+    border:none;
+}
+
+table td:hover{
+    background: rgba(255, 255, 255, 0.596);
+    border-radius: 10px;
+    transition: ease-out .6s;
+}
+
+table thead tr th{
+    
+ 
+    font-size: 15px;
+    background: rgba(59, 59, 59, 0.486);
+    padding:10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    box-shadow: 41px 8px 70px -59px rgba(85,74,74,0.76) inset;
+-webkit-box-shadow: 41px 8px 70px -59px rgba(85,74,74,0.76) inset;
+-moz-box-shadow: 41px 8px 70px -59px rgba(85,74,74,0.76) inset;
+   
+}
+
+
+.header{
+
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding:20px;
+    font-size: 20px;
+}
+
+.header #forward,#backward{
+    cursor: pointer;
+    background: inherit;
+    width: 20px;
+    height: 20px;
+    border:none;
+    margin-left: 10px;
+    /* margin-top: -2px; */
+}
+
+.header i{
+    font-size: 20px;
+
+    color: rgba(255, 255, 255, 0.479);
+}
+#yearDisplay,#monthDisplay{
+   margin-left: 10px;
+}
+
+
+@media screen and (max-width:499px) {
+    .mainWrapper .calendarBox{
+        width: clamp(23rem, 40vw , 35rem);
+    }
+    table{
+        height: 70%;
+        width: 50%;
+        border-spacing: 5px 10px;
+    }
+    table thead tr th{
+        font-size: 13px;
+        width: 30px;
+    height: 30px;
+    }
+}
+
+
+@keyframes move {
+    0%{
+        top:-10%;
+        left:20%;
+    }
+    50%{
+        top:50%;
+        left:60%;
+    }
+    100%{
+        top:-10%;
+    left:20%;
+    }
+}
+
+
+@keyframes move2 {
+    0%{
+        bottom:-10%;
+        right:20%;
+    }
+    50%{
+        bottom:50%;
+        right:60%;
+    }
+    100%{
+        bottom:-10%;
+        right:20%;
+    }
+}
